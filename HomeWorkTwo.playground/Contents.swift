@@ -11,9 +11,9 @@ let someValueThree = !(someValueOne == -10) ? 10 : 0
 //Task two
 
 var userName = "Alex"
-var userAge = 22
+var userAge = 18
 
-if userName == "Alex" && userAge > 18 {
+if userName == "Alex" && userAge >= 18 {
     
     print("Пользователю больше 18")
     
@@ -74,12 +74,9 @@ let idUsers = [1, 2, 3, 3, 3, 4, 5, 5, 5, 6, 6,
                7, 8, 9, 10, 11, 12, 13, 13, 14,
                15, 15, 15]
 
-var unicUsers: Set<Int> = []
+var unicUsers: Set<Int> = Set(idUsers)
 
-for user in 0..<idUsers.count {
-    print(user)
-    unicUsers.insert(idUsers[user])
-}
+
 
 print(unicUsers.sorted())
 
