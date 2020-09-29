@@ -80,34 +80,42 @@ sortedUserNamesZToA(users: &usersNames)
 
 //Task Six
 //Правильных ответов от 2 до 5
-let trueAnswers = 2
+let trueAnswers = 18
+let quantityAnswers = 20
+let gradation: Double = round(4 / Double(quantityAnswers) * Double(trueAnswers))
 
-if trueAnswers == 5 {
+if gradation == 4 {
     print("Отлично")
-} else if trueAnswers == 4 {
+} else if gradation == 3 {
     print("Хорошо")
-} else if trueAnswers == 3 {
+} else if gradation == 2 {
     print("Нормально")
 } else { print("Плохо") }
 
 
-enum Answers: Int{
-    case Отлично = 5
-    case Хорошо = 4
-    case Нормально = 3
-    case Плохо = 2
+enum Answers: Double{
+    case отлично = 4
+    case хорошо = 3
+    case нормально = 2
+    case плохо = 1
+    
+    var answers: Answers!{
+        
+    switch self {
+        case .отлично:
+            print(Answers.отлично)
+        case .хорошо:
+            print(Answers.хорошо)
+        case .нормально:
+            print(Answers.нормально)
+        case .плохо:
+            print(Answers.плохо)
+   }
+        
+    return Answers(rawValue: 4)
+    }
 }
 
-
-switch trueAnswers {
-case Answers.Отлично.rawValue:
-    print(Answers.Отлично)
-case Answers.Хорошо.rawValue:
-    print(Answers.Хорошо)
-case Answers.Нормально.rawValue:
-    print(Answers.Нормально)
-case Answers.Плохо.rawValue:
-    print(Answers.Плохо)
-default:
-    break
-}
+if let answer = Answers(rawValue: gradation) {
+    print(answer)
+} else { print("No corret value")}
