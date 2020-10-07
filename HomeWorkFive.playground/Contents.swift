@@ -25,8 +25,8 @@ func toArray<V, C>(someDictionary: [C: V]) -> [(C, V)] {
     return Array(someDictionary.map{($0.key, $0.value)})
 }
 
-let dict = toArray(someDictionary: [1:"f", 3:"4"])
-print(dict)
+let dictionary = toArray(someDictionary: [1:"f", 3:"4"])
+print(dictionary)
 
 
 
