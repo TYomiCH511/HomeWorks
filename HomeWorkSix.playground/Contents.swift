@@ -29,7 +29,6 @@ extension Int {
 
 var someValue = 3
 
-
 print("!!!!Task Two!!!!")
 print(someValue.powTwo)
 print(someValue.powThree)
@@ -41,14 +40,14 @@ struct User {
     
     var name: String
     var surname: String = ""
-    var age: Int = 0
+    var age: Int
     var sport: String? = nil
    
 }
 
 extension User {
     
-    init(name: String, surname: String, age: Int) {
+    init(name: String, surname: String, age: Int, sport: String) {
         
         self.name = name
         self.surname = surname
@@ -94,27 +93,55 @@ nick.whatIsLike()
 
 //Task four
 
-protocol TableProtocolForMusic{
+protocol TableForMusicProtocol{
     
     var name: String { get set }
-    var artist: String { get }
-    var years: Int { get }
+    var artist: String { get set }
+    var year: Int { get set }
     
-    func aboutTrackMusic() -> String
+    func aboutTrackMusic() -> (String, String, Int)
     
+    func sendFeedback() -> String
 }
 
-class TableView:TableProtocolForMusic {
+struct TableView:TableForMusicProtocol {
     
-    var name: String = "Dance with me"
-    var artist: String = "Igor Makarov"
-    var years: Int = 2019
+    var name: String = ""
+    var artist: String = ""
+    var year: Int = 0
     
-    func aboutTrackMusic() -> String {
-        return "\(name) - \(artist) : \(years)"
+    init() {}
+    
+    init(name: String, artist: String, year: Int) {
+        
+        self.name = name
+        self.artist = artist
+        self.year = year
+    }
+    
+    func aboutTrackMusic() -> (String, String, Int) {
+        
+        return (name, artist, year)
+    }
+    
+    func sendFeedback() -> String {
+        return "Here your feedback for us"
     }
     
 }
 
-let music = TableView()
-music.aboutTrackMusic()
+let nameComposition = ["Dance with me", "Cold me", "I love you"]
+let artist = ["Igor Makarov", "Maksim Skuratov", "Josh Newton"]
+let yearsCompositon = [2019, 2018, 2020]
+
+var tableMusic = [TableView]()
+
+for count in 0...nameComposition.count - 1 {
+    
+    let newMusic = TableView(name: nameComposition[count], artist: artist[count], year: yearsCompositon[count])
+    tableMusic.append(newMusic)
+}
+
+print(tableMusic[0].aboutTrackMusic())
+print(tableMusic[0].sendFeedback())
+print(tableMusic[1].aboutTrackMusic())
