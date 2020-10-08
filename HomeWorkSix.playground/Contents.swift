@@ -106,18 +106,9 @@ protocol TableForMusicProtocol{
 
 struct TableView:TableForMusicProtocol {
     
-    var name: String = ""
-    var artist: String = ""
-    var year: Int = 0
-    
-    init() {}
-    
-    init(name: String, artist: String, year: Int) {
-        
-        self.name = name
-        self.artist = artist
-        self.year = year
-    }
+    var name: String
+    var artist: String 
+    var year: Int
     
     func aboutTrackMusic() -> (String, String, Int) {
         
@@ -145,3 +136,5 @@ for count in 0...nameComposition.count - 1 {
 print(tableMusic[0].aboutTrackMusic())
 print(tableMusic[0].sendFeedback())
 print(tableMusic[1].aboutTrackMusic())
+print(tableMusic[2].aboutTrackMusic())
+
